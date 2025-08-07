@@ -41,5 +41,15 @@
       navigator.serviceWorker.register('sw.js');
     }
   </script>
+
+<script>
+  window.addEventListener('error', (e)=>{
+    const el = document.createElement('div');
+    el.style.cssText='position:fixed;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.8);color:#fff;padding:8px;border:1px solid #f66;border-radius:8px;font:12px/1.2 monospace;z-index:99999';
+    el.textContent='Error: '+ (e.message || 'Unknown') + ' — open DevTools console for details.';
+    document.body.appendChild(el);
+  });
+</script>
 </body>
+
 </html>
