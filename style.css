@@ -1,0 +1,66 @@
+
+:root{
+  --bg: #0b0b0c;
+  --fg: #ffffff;
+  --accent: #00e0a4;
+}
+html,body{
+  margin:0;height:100%;background:var(--bg);color:var(--fg);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+}
+#c{position:fixed;inset:0;touch-action:none;display:block}
+#ui{position:fixed;top:0;left:0;right:0;pointer-events:none}
+#title{
+  pointer-events:auto;margin:12px;padding:8px 12px;background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.1);border-radius:8px;display:inline-block;font-weight:600
+}
+#chapters{position:fixed;top:12px;right:12px;display:flex;gap:8px}
+#chapters button{
+  pointer-events:auto;background:rgba(0,0,0,.5);color:var(--fg);
+  border:1px solid rgba(255,255,255,.2);padding:8px 12px;border-radius:999px;cursor:pointer
+}
+#chapters button.active{border-color:var(--accent);color:var(--accent)}
+#hud{position:fixed;bottom:16px;left:16px;right:16px;display:flex;gap:8px;align-items:center}
+#caption{
+  flex:1;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:8px 12px;min-height:2.2rem
+}
+#hud button{
+  pointer-events:auto;background:rgba(0,0,0,.5);color:var(--fg);
+  border:1px solid rgba(255,255,255,.2);padding:10px;border-radius:10px;min-width:44px;cursor:pointer
+}
+#joystick{
+  position:fixed;bottom:90px;left:16px;width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  pointer-events:auto;touch-action:none
+}
+#stick{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25)
+}
+@media (min-width:900px){ #joystick{display:none} }
+
+/* Splash screen */
+#splash{
+  position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);z-index:9999;animation:fadeOut 0.6s ease forwards;
+  animation-delay:1.8s;
+}
+#splashLogo{
+  width:128px;height:128px;background:url('assets/icon-192.png') center/contain no-repeat;
+  animation:logoAnim 1.5s ease-out forwards;
+}
+#splashText{
+  margin-top:12px;color:var(--fg);font-weight:600;opacity:0;animation:textFade 0.8s ease forwards;animation-delay:1s;
+}
+@keyframes logoAnim{
+  0%{transform:scale(0.8);opacity:0}
+  50%{transform:scale(1.05);opacity:1}
+  100%{transform:scale(1.0);opacity:1}
+}
+@keyframes textFade{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeOut{ to{opacity:0;visibility:hidden} }
